@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import './App.css';
-
+import PokeList from './Components/PokeList/PokeList';
 import { Navbar, Nav } from 'react-bootstrap';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
                 </Navbar.Collapse>
             </Navbar>
             <div className="container mt-5">
-                TODO
+                <PokeList />
             </div>
         </Fragment>
     );
