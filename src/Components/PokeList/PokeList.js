@@ -21,7 +21,7 @@ class PokeList extends Component {
     render() {
 
         const cards = this.state.pokemonList.map(poke => {
-            return <PokeCard key={poke.id} pokemon={poke} />
+            return <PokeCard key={poke.url} pokemonUrl={poke.url} />
         });
 
         return (

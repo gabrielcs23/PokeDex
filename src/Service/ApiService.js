@@ -4,15 +4,14 @@ const ApiService = {
 
     getPagina: async (url) => {
         const res = await axios.get(url);
-        const data = { count: res.data.count, nextPageUrl: res.data.next, previousPageUrl: res.data.previous, pokemonList: res.data.results };
-        data.pokemonList = data.pokemonList.map(poke => {
-            const id = poke.url.match(/\/(\d+)/)[1];
-            return { ...poke, id };
-        });
-        return data;
+        return { count: res.data.count, nextPageUrl: res.data.next, previousPageUrl: res.data.previous, pokemonList: res.data.results };
     },
 
-    getSpriteUrl: (id) => `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${id}.png?raw=true`
+    getPokemon: async (url) => {
+        const res = await axios.get(url);
+        const { height, weight, id, name, sprites, stats, types} = res.data;
+        return { altura: height/10, peso: weight/10, id: id, name: name, spriteUrl: sprites.front_default, stats: stats, types: types }
+    }
 
 }
 
