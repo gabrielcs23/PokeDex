@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PokeCard from '../PokeCard/PokeCard';
 import ApiService from '../../Service/ApiService';
+import Nav from './Nav/Nav';
 
 class PokeList extends Component {
     constructor(props) {
@@ -14,7 +15,16 @@ class PokeList extends Component {
     }
 
     componentDidMount() {
+        this.gotoNextPage();
+    }
+
+    gotoNextPage() {
         ApiService.getPagina(this.state.nextPageUrl)
+                .then(data => this.setState(data));
+    }
+
+    gotoPreviousPage() {
+        ApiService.getPagina(this.state.previousPageUrl)
                 .then(data => this.setState(data));
     }
 
@@ -25,9 +35,17 @@ class PokeList extends Component {
         });
 
         return (
-            <div className="row">
-                {cards}
-            </div>
+            <Fragment>
+                <Nav
+                    previousDisabled={this.state.previousPageUrl == null}
+                    nextDisabled={this.state.nextPageUrl == null}
+                    onPreviousNav={() => this.gotoPreviousPage()}
+                    onNextNav={() => this.gotoNextPage()}
+                     />
+                <div className="row">
+                    {cards}
+                </div>
+            </Fragment>
         );
     }
 
