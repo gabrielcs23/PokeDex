@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 
 const Card = (props) => {
-
-    const formatName = (name) => {
-        return name.replace(/^\w/, c => c.toUpperCase())
-    }
-
     const [hovered, setHovered] = useState(false);
     const toggleHover = () => setHovered(!hovered);
+
+    const { pokemon } = props;
 
     return (
         <div
@@ -15,10 +12,10 @@ const Card = (props) => {
             onMouseEnter={toggleHover}
             onMouseLeave={toggleHover}
         >
-            <img className="card-img-top sprite mx-auto" src={props.pokemon.spriteUrl} alt={""} />
+            <img className="card-img-top sprite mx-auto" src={pokemon.spriteUrl} alt={""} />
             <div className="card-body text-center pt-0 pb-1">
-                <h5>{formatName(props.pokemon.name)}</h5>
-                <p>#{props.pokemon.id}</p>
+                <h5>{pokemon.name}</h5>
+                <p>#{pokemon.id}</p>
             </div>
         </div>
     )

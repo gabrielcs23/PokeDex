@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './PokeCard.css'
 import ApiService from '../../Service/ApiService';
 import Card from './Card';
+import PokeDetalhes from '../PokeDetalhes/PokeDetalhes';
 
 class PokeCard extends Component {
     constructor(props) {
@@ -16,20 +17,51 @@ class PokeCard extends Component {
                 stats: '',
                 types: ''
             },
+            showDetalhes: false
         }
         this.pokemonUrl = props.pokemonUrl;
     }
 
+    formatName(name) {
+        return name.replace(/^\w/, c => c.toUpperCase())
+    }
+
     componentDidMount() {
         ApiService.getPokemon(this.pokemonUrl)
-            .then(data => this.setState({ pokemon: data }));
+            .then(poke => {
+                poke.name = this.formatName(poke.name);
+                return poke;
+            })
+            .then(poke => this.setState({ pokemon: poke }));
+    }
+
+    toggleDetalhes(e) {
+        if(e) {
+            e.preventDefault();
+        }
+        this.setState(
+            {pokemon: this.state.pokemon, showDetalhes: !this.state.showDetalhes}
+        )
     }
 
     render() {
         return (
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-                <Card pokemon={this.state.pokemon} />
-            </div>
+            <Fragment>
+                <a className="col-12 col-sm-6 col-md-4 col-lg-3 mb-3" href="/" onClick={e => this.toggleDetalhes(e)}>
+                    <div>
+                        <Card pokemon={this.state.pokemon} />
+                    </div>
+                </a>
+                {this.state.showDetalhes ? 
+                    <PokeDetalhes
+                        showModal={this.state.showDetalhes}
+                        pokemon={this.state.pokemon}
+                        onClose={() => this.toggleDetalhes()}
+                    />
+                    :
+                    ''
+                }
+            </Fragment>
         );
     }
 
