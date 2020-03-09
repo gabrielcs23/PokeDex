@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import PokeCard from '../PokeCard/PokeCard';
+import ApiService from '../../Service/ApiService';
 
 class PokeList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            previousPageUrl: '',
-            nextPageUrl: '',
-            pokemonList: []
+            previousPageUrl: null,
+            nextPageUrl: 'https://pokeapi.co/api/v2/pokemon/',
+            pokemonList: [],
+            count: 0
         };
+    }
+
+    componentDidMount() {
+        ApiService.getPagina(this.state.nextPageUrl)
+                .then(data => this.setState(data));
     }
 
     render() {
 
-        const mockPokeImg = [
-            {id: 1, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'},
-            {id: 2, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'},
-            {id: 3, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'},
-            {id: 4, img: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png'}
-        ];
-
-        const cards = mockPokeImg.map(poke => {
+        const cards = this.state.pokemonList.map(poke => {
             return <PokeCard key={poke.id} pokemon={poke} />
         });
 

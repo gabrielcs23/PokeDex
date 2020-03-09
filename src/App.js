@@ -18,7 +18,7 @@ function App() {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <div className="container mt-5">
+            <div className="container mt-2">
                 <PokeList />
             </div>
         </Fragment>
