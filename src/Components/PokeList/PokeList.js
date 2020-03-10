@@ -7,25 +7,21 @@ class PokeList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            previousPageUrl: null,
-            nextPageUrl: 'https://pokeapi.co/api/v2/pokemon/',
-            pokemonList: [],
-            count: 0
-        };
+            count: 0,
+            currPage: 1,
+            pokemonList: []
+        }
+        this.pageSize = 20;
     }
 
     componentDidMount() {
-        this.gotoNextPage();
+        this.navigateToPage(1);
     }
 
-    gotoNextPage() {
-        ApiService.getPagina(this.state.nextPageUrl)
-                .then(data => this.setState(data));
-    }
-
-    gotoPreviousPage() {
-        ApiService.getPagina(this.state.previousPageUrl)
-                .then(data => this.setState(data));
+    navigateToPage(page) {
+        const offset = (page - 1) * 20
+        ApiService.getPage(offset)
+                .then(data => this.setState({...data, currPage: page}));
     }
 
     render() {
@@ -37,11 +33,11 @@ class PokeList extends Component {
         return (
             <Fragment>
                 <Nav
-                    previousDisabled={this.state.previousPageUrl == null}
-                    nextDisabled={this.state.nextPageUrl == null}
-                    onPreviousNav={() => this.gotoPreviousPage()}
-                    onNextNav={() => this.gotoNextPage()}
-                     />
+                    count={this.state.count}
+                    currPage={this.state.currPage}
+                    pageSize={this.pageSize}
+                    navigateToPage={(page) => this.navigateToPage(page)}
+                />
                 <div className="row">
                     {cards}
                 </div>

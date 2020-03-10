@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const ApiService = {
 
-    getPagina: async (url) => {
-        const res = await axios.get(url);
-        return { count: res.data.count, nextPageUrl: res.data.next, previousPageUrl: res.data.previous, pokemonList: res.data.results };
+    getPage: async (offset) => {
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=20`);
+        return { count: res.data.count, pokemonList: res.data.results }
     },
 
     getPokemon: async (url) => {
