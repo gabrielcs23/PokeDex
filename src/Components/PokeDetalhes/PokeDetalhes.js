@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ModalDetalhes from './ModalDetalhes';
+import ModalDetalhes from './ModalDetalhes/ModalDetalhes';
 
 const PokeDetalhes = (props) =>  {
 
