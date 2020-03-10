@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Stats from './Stats';
 import Types from './Types';
-import ApiService from '../../../Service/ApiService';
+import ApiService from '../../../../Service/ApiService';
 import Evolution from './Evolution/Evolution';
 
 class BodyDetalhes extends Component {

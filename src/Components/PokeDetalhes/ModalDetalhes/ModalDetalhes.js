@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './ModalDetalhes.css';
-import BodyDetalhes from './BodyDetalhes';
+import BodyDetalhes from './BodyDetalhes/BodyDetalhes';
 
 const ModalDetalhes = (props) => {
 
