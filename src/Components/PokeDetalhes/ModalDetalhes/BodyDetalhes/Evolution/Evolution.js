@@ -24,21 +24,23 @@ class Evolution extends Component {
 
     render() {
         return (
-            <div className="card">
-                <div className="row no-gutters">
-                    <div className="col-md-6">
-                        <div className="card-body card-evolution">
-                            <h5 className="card-title">Evolves from:</h5>
-                            <p className="card-text">{StringFormatter.capitalize(this.state.fromName)}</p>
+            <div className="d-flex">
+                <div className="card mx-auto">
+                    <div className="row no-gutters">
+                        <div className="col-12 col-md-6">
+                            <div className="card-body card-evolution">
+                                <h5 className="card-title">Evolves from:</h5>
+                                <p className="card-text">{StringFormatter.capitalize(this.state.fromName)}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-md-6 align-self-center">
-                        <img className="sprite-evolution" src={this.state.fromImgUrl} alt={""} />
+                        <div className="col-12 col-md-6">
+                            <img className="sprite-evolution" src={this.state.fromImgUrl} alt={""} />
+                        </div>
                     </div>
                 </div>
             </div>
-                );
-            }
+        );
+    }
         
-        }
+}
 export default Evolution;

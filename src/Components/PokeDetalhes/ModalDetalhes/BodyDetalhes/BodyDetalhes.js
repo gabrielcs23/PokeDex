@@ -45,7 +45,7 @@ class BodyDetalhes extends Component {
                                 </div>
                             </div>
                         </div>
-                        <h6 className="mt-4">
+                        <h6 className="mt-4 text-center">
                             {this.state.species.descricao}
                         </h6>
                     </div>

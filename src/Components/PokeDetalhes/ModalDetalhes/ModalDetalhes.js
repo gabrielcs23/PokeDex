@@ -18,9 +18,9 @@ const ModalDetalhes = (props) => {
                 <h5 className="modal-title">
                     {pokemon.name} #{pokemon.id}
                 </h5>
-                <Button className="close" data-dismiss="modal" aria-label="Close" onClick={props.onHide}>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={props.onHide}>
                     <span aria-hidden="true">&times;</span>
-                </Button>
+                </button>
             </div>
             <BodyDetalhes pokemon={pokemon} />
             <div className="modal-footer">
