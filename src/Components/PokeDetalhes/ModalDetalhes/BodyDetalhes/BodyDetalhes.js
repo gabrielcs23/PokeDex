@@ -77,18 +77,20 @@ class BodyDetalhes extends Component {
                                         </h6>
                                     </div>
                                 </div>
-                                <div className="row">
-                                    <div className="col-6">
-                                        <h6 className="float-right">
-                                            Capture rate:
-                                        </h6>
+                                {this.state.species.captureRate ?
+                                    <div className="row">
+                                        <div className="col-6">
+                                            <h6 className="float-right">
+                                                Capture rate:
+                                            </h6>
+                                        </div>
+                                        <div className="col-6">
+                                            <h6 className="float-left">
+                                                {Math.round((this.state.species.captureRate / 255) * 100)}%
+                                            </h6>
+                                        </div>
                                     </div>
-                                    <div className="col-6">
-                                        <h6 className="float-left">
-                                            {Math.round((this.state.species.captureRate / 255) * 100)}%
-                                        </h6>
-                                    </div>
-                                </div>
+                                : ''}
                             </div>
                             <div className="col-12 col-md-6">
                                 {this.state.species.evolvesFrom ? <Evolution evolvesFrom={this.state.species.evolvesFrom} />

@@ -17,7 +17,7 @@ class Evolution extends Component {
     }
 
     componentDidMount() {
-        ApiService.getSpriteAndIdUrlFromSpecies(this.state.from.url)
+        ApiService.getSpriteUrlAndIdFromSpecies(this.state.from.url)
             .then(res => this.setState({
                 from: {
                     name: this.state.from.name,
