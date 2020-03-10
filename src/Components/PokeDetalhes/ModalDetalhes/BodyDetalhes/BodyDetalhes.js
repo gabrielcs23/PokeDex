@@ -14,7 +14,15 @@ class BodyDetalhes extends Component {
     }
 
     componentDidMount() {
-        ApiService.getPokemonSpecies(this.state.pokemon.id)
+        ApiService.getPokemonSpecies(this.state.pokemon.speciesUrl)
+                .then(species => {
+                    const descricaoEn = species.descricao.filter(desc => desc.language.name === 'en');
+                    let descricao = descricaoEn.length > 0 ? descricaoEn.find(desc => desc.version.name === "x") : null;
+                    descricao = descricao ? descricao.flavor_text
+                        : descricaoEn.length > 0 ? descricaoEn[0].flavor_text : '';
+                    species.descricao = descricao;
+                    return species;
+                })
                 .then(species => {
                     this.setState({
                         pokemon: this.state.pokemon,

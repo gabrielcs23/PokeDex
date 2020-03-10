@@ -6,13 +6,15 @@ const Card = (props) => {
 
     const { pokemon } = props;
 
+    const img = pokemon.spriteUrl ? <img className="card-img-top sprite mx-auto" src={pokemon.spriteUrl} alt={""} /> : '';
+
     return (
         <div
             className={`card ${hovered ? 'shadow' : 'shadow-sm'}`}
             onMouseEnter={toggleHover}
             onMouseLeave={toggleHover}
         >
-            <img className="card-img-top sprite mx-auto" src={pokemon.spriteUrl} alt={""} />
+            {img}
             <div className="card-body text-center pt-0 pb-1">
                 <h5>{pokemon.name}</h5>
                 <p>#{pokemon.id}</p>
