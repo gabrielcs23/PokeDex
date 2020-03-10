@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Stats from './Stats';
-import Types from './Types';
+import Stats from './Stats/Stats';
+import Types from './Types/Types';
 import ApiService from '../../../../Service/ApiService';
 import Evolution from './Evolution/Evolution';
 

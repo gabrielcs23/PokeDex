@@ -1,5 +1,5 @@
 import React from 'react';
-import StringFormatter from '../../../../Utils/StringFormatter';
+import StringFormatter from '../../../../../Utils/StringFormatter';
 
 const Types = (props) => {
 

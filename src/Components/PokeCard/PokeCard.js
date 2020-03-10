@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './PokeCard.css'
 import ApiService from '../../Service/ApiService';
-import Card from './Card';
+import Card from './Card/Card';
 import PokeDetalhes from '../PokeDetalhes/PokeDetalhes';
 import StringFormatter from '../../Utils/StringFormatter'
 
