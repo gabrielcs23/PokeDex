@@ -1,4 +1,5 @@
 import React from 'react';
+import StringFormatter from '../../../../Utils/StringFormatter';
 
 const Types = (props) => {
 
@@ -14,7 +15,7 @@ const Types = (props) => {
         return (
             <h5 className="pl-2 pr-2" key={type.type.name}>
                 <span className="badge badge-pill badge-primary">
-                    {type.type.name}
+                    {StringFormatter.capitalize(type.type.name)}
                 </span>
             </h5>
         );

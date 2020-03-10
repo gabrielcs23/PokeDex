@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ApiService from '../../../../../Service/ApiService';
 import './Evolution.css';
+import StringFormatter from '../../../../../Utils/StringFormatter';
 
 class Evolution extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class Evolution extends Component {
                     <div className="col-md-6">
                         <div className="card-body card-evolution">
                             <h5 className="card-title">Evolves from:</h5>
-                            <p className="card-text">{this.state.fromName}</p>
+                            <p className="card-text">{StringFormatter.capitalize(this.state.fromName)}</p>
                         </div>
                     </div>
                     <div className="col-md-6 align-self-center">

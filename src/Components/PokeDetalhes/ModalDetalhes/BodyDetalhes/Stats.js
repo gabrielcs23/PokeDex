@@ -1,4 +1,5 @@
 import React from 'react';
+import StringFormatter from '../../../../Utils/StringFormatter';
 
 const Stats = (props) => {
 
@@ -6,7 +7,7 @@ const Stats = (props) => {
         const stat = { value: elem.base_stat, name: elem.stat.name };
         return (
             <tr key={stat.name}>
-                <th scope="row">{stat.name}</th>
+                <th scope="row">{StringFormatter.capitalize(stat.name)}</th>
                 <td>{stat.value}</td>
             </tr>
         );

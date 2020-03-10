@@ -3,6 +3,7 @@ import './PokeCard.css'
 import ApiService from '../../Service/ApiService';
 import Card from './Card';
 import PokeDetalhes from '../PokeDetalhes/PokeDetalhes';
+import StringFormatter from '../../Utils/StringFormatter'
 
 class PokeCard extends Component {
     constructor(props) {
@@ -22,14 +23,10 @@ class PokeCard extends Component {
         this.pokemonUrl = props.pokemonUrl;
     }
 
-    formatName(name) {
-        return name.replace(/^\w/, c => c.toUpperCase())
-    }
-
     componentDidMount() {
         ApiService.getPokemon(this.pokemonUrl)
             .then(poke => {
-                poke.name = this.formatName(poke.name);
+                poke.name = StringFormatter.capitalize(poke.name);
                 return poke;
             })
             .then(poke => this.setState({ pokemon: poke }));
