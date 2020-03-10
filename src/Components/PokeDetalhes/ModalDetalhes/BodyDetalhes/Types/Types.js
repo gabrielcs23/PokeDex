@@ -1,5 +1,6 @@
 import React from 'react';
 import StringFormatter from '../../../../../Utils/StringFormatter';
+import './Types.css';
 
 const Types = (props) => {
 
@@ -14,7 +15,7 @@ const Types = (props) => {
     }).map(type => {
         return (
             <h5 className="pl-2 pr-2" key={type.type.name}>
-                <span className="badge badge-pill badge-primary">
+                <span className={`badge badge-pill ${type.type.name}`}>
                     {StringFormatter.capitalize(type.type.name)}
                 </span>
             </h5>
