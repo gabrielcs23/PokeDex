@@ -18,6 +18,19 @@ const Nav = (props) => {
 
     const pages = [];
 
+    if (currPage !== 1) {
+        pages.push(
+            <li key={'1'} className="page-item">
+                <button
+                    className="page-link"
+                    onClick={() => navigateToPage(1)}
+                >
+                    1
+                </button>
+            </li>
+        );
+    }
+
     if (currPage - 2 > 2) {
 
         pages.push(
@@ -59,17 +72,15 @@ const Nav = (props) => {
         );
     }
 
-    if (currPage !== 1) {
-        pages.push(
-            <li key={`${currPage}`} className="page-item">
-                <button
-                    className="page-link"
-                >
-                    {currPage}
-                </button>
-            </li>
-        )
-    }
+    pages.push(
+        <li key={`${currPage}`} className="page-item active">
+            <button
+                className="page-link"
+            >
+                {currPage}
+            </button>
+        </li>
+    )
 
     if (currPage !== lastPage) {
         if (currPage + 1 < lastPage) {
@@ -134,14 +145,6 @@ const Nav = (props) => {
                         disabled={previousDisabled}
                     >
                         Anterior
-                    </button>
-                </li>
-                <li key={'1'} className="page-item">
-                    <button
-                        className="page-link"
-                        onClick={() => navigateToPage(1)}
-                    >
-                        1
                     </button>
                 </li>
                 {pages}
