@@ -1,8 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './ModalDetalhes.css';
-import Stats from './Stats';
-import Types from './Types';
+import BodyDetalhes from './BodyDetalhes';
 
 const ModalDetalhes = (props) => {
 
@@ -23,39 +22,7 @@ const ModalDetalhes = (props) => {
                     <span aria-hidden="true">&times;</span>
                 </Button>
             </div>
-            <div className="modal-body">
-                <div className="card">
-                    <div className="card-body">
-                        <div className="row align-items-center">
-                            <div className="col-3">
-                                <img className="img-detalhe" src={pokemon.spriteUrl} alt={""} />
-                            </div>
-                            <div className="col-9">
-                                <div className="row">
-                                    <div className="col-12">
-                                        <Types types={pokemon.types}/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-12">
-                                        {/* TODO corrigir cor */}
-                                        <Stats color={"red"} stats={pokemon.stats}/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="card-body">
-                        <div>
-                            <span>{pokemon.altura} m</span>
-                        </div>
-                        <div>
-                            <span>{pokemon.peso} kg</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <BodyDetalhes pokemon={pokemon} />
             <div className="modal-footer">
                 <Button variant="outline-info" onClick={props.onHide}>Fechar</Button>
             </div>
