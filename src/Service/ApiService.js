@@ -22,12 +22,12 @@ const ApiService = {
         return { captureRate: capture_rate, color: color.name, descricao: descricao.flavor_text, evolvesFrom: evolves_from_species};
     },
 
-    getSpriteUrlFromSpecies: async (url) => {
+    getSpriteAndIdUrlFromSpecies: async (url) => {
         const speciesRes = await axios.get(url);
         const { id } = speciesRes.data;
         const pokemonRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
         const { sprites } = pokemonRes.data;
-        return sprites.front_default;
+        return { spriteUrl: sprites.front_default, id: id};
     }
 
 }
